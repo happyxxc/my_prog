@@ -1,0 +1,88 @@
+/* components/citySelect/citySelect.wxss */
+
+/* 搜索框 */
+.search-box {
+  display: flex; /* 开启 Flex 布局，子元素默认横向排列 */
+  align-items: center; /* 子元素垂直居中，避免图标与输入框上下错位 */
+  justify-content: flex-start; /* 子元素靠左排列，符合搜索框视觉习惯 */
+  background-color: #f5f5f5; /* 搜索框背景色 */
+  border-radius: 30rpx; /* 大圆角，优化视觉效果 */
+  padding: 0 20rpx; /* 左右内边距，避免内容贴边 */
+  margin: 16rpx; /* 外部边距，与其他元素分隔 */
+  height: 60rpx; /* 固定高度，确保图标与输入框垂直对齐 */
+}
+
+/* 放大镜图标样式 */
+.search-icon {
+  color: #999; /* 图标颜色（灰色） */
+  margin-right: 8rpx; /* 与输入框的间距 */
+}
+
+.search-input {
+  width: 100%;
+  height: 60rpx;
+  padding: 0 24rpx;
+  background-color: #f5f5f5;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+}
+
+/* 热门城市 */
+.hot-city-section {
+  padding: 20rpx 16rpx;
+  background-color: #fff;
+  margin-bottom: 16rpx;
+}
+
+/* 所有城市 */
+.all-city-section {
+  padding: 0 16rpx 120rpx;
+  background-color: #fff;
+}
+
+.section-title {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 16rpx;
+}
+
+/* 城市网格（热门城市） */
+.city-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+/* 城市列表（按字母分组） */
+.city-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.letter-title {
+  display: block;
+  font-size: 24rpx;
+  color: #666;
+  padding: 16rpx 0 8rpx;
+  background-color: #f9f9f9;
+  padding-left: 16rpx;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* 城市项通用样式 */
+.city-item {
+  padding: 16rpx 24rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  color: #333;
+  display: inline-block;
+}
+
+.city-item:active {
+  background-color: #e5e5e5;
+}

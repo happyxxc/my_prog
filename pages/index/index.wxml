@@ -1,0 +1,46 @@
+<!--index.wxml-->
+
+<!-- pages/match/match.wxml -->
+<!-- 筛选器 -->
+<view class="filter-bar">
+  <!-- 地区筛选 -->
+<view class = "filter-item" bindtap="goToCitySelect">
+    <view class="filter-content">
+      <text>{{city}}</text>
+      <view class="arrow-down"></view>
+    </view>
+</view>
+
+  <!-- 组别筛选 -->
+  <picker 
+    class="filter-item" 
+    mode="selector" 
+    range="{{categories}}" 
+    value="{{categoryIndex}}" 
+    bindchange="onCategoryChange"
+  >
+    <view class="filter-content">
+      <text>{{categories[categoryIndex]}}</text>
+      <view class="arrow-down"></view>
+    </view>
+  </picker>
+
+  <!-- 日期筛选 -->
+  <picker 
+    class="filter-item" 
+    mode="selector" 
+    range="{{dates}}" 
+    value="{{dateIndex}}" 
+    bindchange="onDateChange"
+  >
+    <view class="filter-content">
+      <text>{{dates[dateIndex]}}</text>
+      <view class="arrow-down"></view>
+    </view>
+  </picker>
+
+  <!-- 搜索按钮 -->
+  <view class="search-btn" bindtap="onSearch">
+    <icon type="search" size="24" color="#666" />
+  </view>
+</view>

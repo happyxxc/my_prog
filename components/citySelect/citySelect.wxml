@@ -1,0 +1,43 @@
+<!--components/citySelect/citySelect.wxml-->
+
+<!-- 顶部搜索框 -->
+<view class="search-box">
+  <!-- 放大镜图标 -->
+  <icon class="search-icon" type="search" size="16"></icon>
+
+  <input 
+    class="search-input"
+    placeholder="搜索城市"
+    bindinput="onInput"
+    value="{{searchKey}}"
+  />
+</view>
+
+<!-- 热门城市 -->
+<view class="hot-city-section">
+  <text class="section-title">热门城市</text>
+  <view class="city-grid">
+    <view 
+      class="city-item" 
+      wx:for="{{hotCities}}"  
+      wx:key="index"
+      bindtap="selectCity"
+      data-city="{{item}}"
+    >
+      {{item}}
+    </view>
+  </view>
+</view>
+
+<!-- 所有城市（按字母分组，显示所过滤的分组） -->
+<view class="all-city-section">
+  <text class="section-title">所有城市</text>
+  <view class="city-list">
+    <view class="letter-group" wx:for="{{filteredGroups}}" wx:for-item="group">
+      <text class="letter-title">{{group.letter}}</text>
+      <view class="city-item" wx:for="{{group.cities}}" bindtap="selectCity" data-city="{{item}}">
+        {{item}}
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,4 @@
+<!--pages/cityselector/cityselector.wxml-->
+<city-select city="{{selectedCity}}" bind:select="selectCity"></city-select>
+
+<!--pages/cityselec city="{{selectedCity}}" bind:select="selectedCity"tor/cityselector.wxml-->
