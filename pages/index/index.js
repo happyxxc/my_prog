@@ -17,8 +17,11 @@ Page({
     categories: ['全部组别', '混合组', '男子组', '女子组'],
     categoryIndex: 0,
     //日期（待开发）
-    dates: ['全部日期', '本周', '本月', '下月'],
-    dateIndex: 0
+    dateSelect:['全部日期','选择日期'],
+    dateSelectIndex:0,
+    showCalendar:false,
+    date:''
+
   },
 
   // 跳转到城市选择页
@@ -49,13 +52,35 @@ Page({
   },
   
   // 日期筛选变化
-  onDateChange(e) {
+  onDateChange(event){
     this.setData({
-      dateIndex: e.detail.value
+      dateSelectIndex: event.detail.value
     });
+    if (this.data.dateSelect[this.data.dateSelectIndex] === '选择日期') {
+      this._onDisplayDate();
+    } else {
+      this.setData({
+        dateSelectIndex: 0 ,
+        date:'全部日期'
+      });  
+    }
+  },
 
-    //调试用
-    console.log('选中日期：', this.data.dates[e.detail.value]);
+  _onDisplayDate(){
+    this.setData({ showCalendar: true });
+  },
+  onCloseCalendar(){
+    this.setData({ showCalendar: false });
+  },
+  onConfirmDate(event){
+    this.setData({
+      showCalendar: false,
+      date: this._formatDate(event.detail),
+    });
+  },
+  _formatDate(date) {
+    date = new Date(date);
+    return `${date.getMonth() + 1}月${date.getDate()}日`;
   },
   
   // 搜索按钮点击（未实现）

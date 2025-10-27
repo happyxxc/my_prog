@@ -1,0 +1,16 @@
+{
+  "name": "mini_01",
+  "version": "1.0.0",
+  "description": "\"# my_prog\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.11.7",
+    "tdesign-miniprogram": "^1.11.0"
+  }
+}

@@ -1,6 +1,8 @@
 {
-  "navigationBarTitleText": "橄榄力",
-  "navigationBarBackgroundColor": "#1E293B",
-  "navigationBarTextStyle": "white",
-  "usingComponents": {}
+  "usingComponents": {
+    "van-calendar": "@vant/weapp/calendar/index",
+    "van-cell": "@vant/weapp/cell/index"
+  }
+  
+  
 }

@@ -29,18 +29,28 @@
   <picker 
     class="filter-item" 
     mode="selector" 
-    range="{{dates}}" 
-    value="{{dateIndex}}" 
+    range="{{dateSelect}}" 
+    value="{{dateSelectIndex}}" 
     bindchange="onDateChange"
   >
     <view class="filter-content">
-      <text>{{dates[dateIndex]}}</text>
+      <text>{{date||'全部日期'}}</text>
       <view class="arrow-down"></view>
     </view>
   </picker>
+
+    <!-- 日期选择器 -->
+  <van-calendar 
+  show="{{ showCalendar }}" 
+  bind:close="onCloseCalendar" 
+  bind:confirm="onConfirmDate" 
+  title="选择日期"
+  />
 
   <!-- 搜索按钮 -->
   <view class="search-btn" bindtap="onSearch">
     <icon type="search" size="24" color="#666" />
   </view>
 </view>
+
+
