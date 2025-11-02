@@ -1,6 +1,5 @@
 <!--index.wxml-->
 
-<!-- pages/match/match.wxml -->
 <!-- 筛选器 -->
 <view class="filter-bar">
   <!-- 地区筛选 -->
@@ -34,7 +33,7 @@
     bindchange="onDateChange"
   >
     <view class="filter-content">
-      <text>{{date||'全部日期'}}</text>
+      <text>{{dateShow||'全部日期'}}</text>
       <view class="arrow-down"></view>
     </view>
   </picker>
@@ -50,6 +49,65 @@
   <!-- 搜索按钮 -->
   <view class="search-btn" bindtap="onSearch">
     <icon type="search" size="24" color="#666" />
+  </view>
+</view>
+
+<!-- 主内容区域 -->
+<view class="main-content">
+  <!-- 赛事列表 -->
+  <view class="match-list">
+    <!-- 有数据时显示赛事列表 -->
+    <block wx:if="{{matches.length > 0}}">
+      <block wx:for="{{matches}}" wx:key="id">
+      <view class="match-card" bindtap="onMatchDetail" data-id="{{item.id}}">
+        <!-- 赛事状态标签 -->
+        <view class="status-badge" wx:if="{{item.status === 'upcoming'}}">
+          即将开始
+        </view>
+        <view class="status-badge ended" wx:if="{{item.status === 'ended'}}">
+          已结束
+        </view>
+        
+        <!-- 赛事图片 -->
+        <view class="match-image">
+          <image src="{{item.image}}" mode="aspectFill"></image>
+        </view>
+        
+        <!-- 赛事信息 -->
+        <view class="match-info">
+          <view class="match-title">{{item.title}}</view>
+          
+          <!-- 赛事详情 -->
+          <view class="match-details">
+            <!-- 日期 -->
+            <view class="detail-item">
+              <van-icon class="detail-icon" name="calendar-o" size="16" color="#999"></van-icon>
+              <text class="detail-text">{{item.date.year}}年{{item.date.month}}月{{item.date.day}}日</text>
+            </view>
+            
+            <!-- 地点 -->
+            <view class="detail-item">
+              <van-icon class="detail-icon" name="location-o" size="16" color="#1c12a1ff"></van-icon>
+              <text class="detail-text">{{item.location}}</text>
+            </view>
+          </view>
+          
+          <!-- 分享按钮 -->
+          <view class="share-btn">
+            <van-icon name="share-o" size="20" color="#df3535ff"></van-icon>
+          </view>
+        </view>
+      </view>
+      </block>
+    </block>
+    
+    <!-- 无数据时显示提示 -->
+    <block wx:else>
+      <view class="empty-data">
+        <text class="empty-icon">📝</text>
+        <text class="empty-text">暂无赛事数据</text>
+      </view>
+    </block>
   </view>
 </view>
 

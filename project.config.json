@@ -1,6 +1,6 @@
 {
   "compileType": "miniprogram",
-  "libVersion": "trial",
+  "libVersion": "3.10.3",
   "packOptions": {
     "ignore": [],
     "include": []
@@ -19,7 +19,6 @@
         "miniprogramNpmDistDir": "./"
       }
     ],
-
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
