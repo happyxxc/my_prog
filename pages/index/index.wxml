@@ -92,9 +92,9 @@
             </view>
           </view>
           
-          <!-- 分享按钮 -->
-          <view class="share-btn">
-            <van-icon name="share-o" size="20" color="#df3535ff"></van-icon>
+          <!-- 收藏按钮 -->
+          <view class="favorite-btn" catchtap="onFavorite" data-id="{{item.id}}" data-index="{{index}}">
+            <van-icon name="{{item.isFavorite ? 'star' : 'star-o'}}" size="20" color="{{item.isFavorite ? '#ff9500' : '#df3535ff'}}"></van-icon>
           </view>
         </view>
       </view>

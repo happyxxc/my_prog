@@ -1,0 +1,100 @@
+<!-- pages/matchDetail/matchDetail.wxml -->
+
+<view class="match-detail-container">
+  <!-- 加载状态 -->
+  <block wx:if="{{isLoading}}">
+    <view class="loading-container">
+      <van-loading type="spinner" size="36px" color="#1989fa" />
+      <view class="loading-text">加载中...</view>
+    </view>
+  </block>
+
+  <!-- 赛事详情内容 -->
+  <block wx:elif="{{matchInfo}}">
+    <!-- 2. 赛事图片 -->
+    <view class="banner-container">
+      <image class="banner-image" src="{{matchInfo.image || 'https://placehold.co/400x300/e9f1fa/1a73e8?text=Rugby+Match'}}" mode="widthFix"></image>
+    </view>
+
+    <!-- 3. 赛事标题 -->
+    <view class="match-title">{{matchInfo.title || '未设置标题'}}</view>
+
+    <!-- 4. 赛事详细信息（2×2矩阵） -->
+    <view class="detail-info">
+      <view class="info-grid">
+        <view class="info-item">
+          <van-icon name="calendar-o" class="info-icon" />
+          <view class="info-value">{{matchInfo.date.year || ''}}年{{matchInfo.date.month || ''}}月{{matchInfo.date.day || ''}}日</view>
+        </view>
+        <view class="info-item">
+          <van-icon name="clock-o" class="info-icon" />
+          <view class="info-value">{{matchInfo.time || '未设置时间'}}</view>
+        </view>
+        <view class="info-item">
+          <van-icon name="location-o" class="info-icon" />
+          <view class="info-value">{{matchInfo.location || '未设置地点'}}</view>
+        </view>
+        <view class="info-item">
+          <van-icon name="user-o" class="info-icon" />
+          <view class="info-value">{{matchInfo.category || '未设置组别'}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 5. 报名按钮 -->
+    <view class="register-section">
+      <button class="register-btn" bindtap="onRegister">立即报名</button>
+    </view>
+
+    <!-- 6. 赛程安排标题 -->
+    <view class="section-title">
+      <van-icon name="description-o" class="info-icon" />
+      <view class="title-text">赛程安排</view>
+    </view>
+
+    <!-- 7. 赛程安排内容 -->
+    <view class="schedule-section">
+      <block wx:if="{{matchInfo.schedule && matchInfo.schedule.length > 0}}">
+        <view class="schedule-item" wx:for="{{matchInfo.schedule}}" wx:key="index">
+          <view class="schedule-left">
+            <view class="schedule-phase">{{item.phase || '阶段'}}</view>
+            <view class="schedule-time">{{item.time || '时间待定'}} · {{item.matches || '待定'}}</view>
+          </view>
+          <view class="schedule-date">{{item.date || '日期待定'}}</view>
+        </view>
+      </block>
+      <view wx:else class="empty-text">暂无赛程安排</view>
+    </view>
+
+    <!-- 8. 参赛队伍标题 -->
+    <view class="teams-header">
+      <view class="teams-title">
+        <van-icon name="award-o" class="info-icon" />
+        参赛队伍
+        </view>
+      <view class="teams-count">共{{matchInfo.teams ? matchInfo.teams.length : 0}}支队伍</view>
+    </view>
+
+    <!-- 9. 参赛队伍列表（3列排布） -->
+    <view class="teams-section">
+      <block wx:if="{{matchInfo.teams && matchInfo.teams.length > 0}}">
+        <view class="teams-grid">
+          <view class="team-item" wx:for="{{matchInfo.teams}}" wx:key="index">
+            <view class="team-icon">{{item.substring(0, 1)}}</view>
+            <view class="team-name">{{item}}</view>
+          </view>
+        </view>
+      </block>
+      <view wx:else class="empty-text">暂无参赛队伍</view>
+    </view>
+  </block>
+
+  <!-- 无数据状态 -->
+  <block wx:else>
+    <view class="empty-container">
+      <view class="empty-icon">📅</view>
+      <view class="empty-text">暂无赛事信息</view>
+      <button class="back-btn" bindtap="onBack">返回首页</button>
+    </view>
+  </block>
+</view>

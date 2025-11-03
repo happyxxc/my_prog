@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "赛事详情",
+  "usingComponents": {
+    "van-loading": "@vant/weapp/loading",
+    "van-icon": "@vant/weapp/icon"
+  },
+  "enablePullDownRefresh": false
+}

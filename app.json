@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/match/match",
-    "pages/cityselector/cityselector"
+    "pages/cityselector/cityselector",
+    "pages/matchDetail/matchDetail"
   ],
   "window": {
     "navigationBarTextStyle": "white",

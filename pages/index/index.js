@@ -304,15 +304,40 @@ Page({
   // 赛事详情点击事件
   onMatchDetail(e) {
     const matchId = e.currentTarget.dataset.id;
-    // 这里可以跳转到赛事详情页
-    wx.showToast({
-      title: `查看赛事ID: ${matchId}`,
-      icon: 'none'
+    // 跳转到赛事详情页
+    wx.navigateTo({
+      url: `/pages/matchDetail/matchDetail?id=${matchId}`
     });
-    // 实际应用中可以使用wx.navigateTo跳转到详情页
-    // wx.navigateTo({
-    //   url: `/pages/matchDetail/matchDetail?id=${matchId}`
-    // });
+  },
+  
+  // 收藏按钮点击事件
+  //暂定，收藏功能数据应当属于用户个人数据；当前实现为简单的前端状态更新，实际应用中需要同步到服务器。
+  onFavorite(e) {
+    // 阻止事件冒泡，避免触发父元素的onMatchDetail事件
+    // 微信小程序中正确的阻止冒泡方式是设置属性而非调用方法
+    const matchId = e.currentTarget.dataset.id;
+    const index = e.currentTarget.dataset.index;
+    // 获取当前收藏状态（默认未收藏）
+    const isFavorite = this.data.matches[index].isFavorite || false;
+    
+    // 更新收藏状态
+    const newMatches = [...this.data.matches];
+    newMatches[index].isFavorite = !isFavorite;
+    
+    // 更新数据
+    this.setData({
+      matches: newMatches
+    });
+    
+    // 显示收藏/取消收藏提示
+    wx.showToast({
+      title: isFavorite ? '已取消收藏' : '收藏成功',
+      icon: 'success',
+      duration: 2000
+    });
+    
+    // 在实际应用中，这里应该调用API将收藏状态同步到服务器
+    console.log(`${isFavorite ? '取消收藏' : '收藏'}赛事:`, matchId);
   },
   
   // 监听上拉触底事件（下拉加载更多）
