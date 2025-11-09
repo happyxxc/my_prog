@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/allThings/allThings",
+    "pages/users/users",
     "pages/logs/logs",
     "pages/match/match",
     "pages/cityselector/cityselector",
@@ -8,7 +10,7 @@
   ],
   "window": {
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "橄染力",
+    "navigationBarTitleText": "橄榄力",
     "navigationBarBackgroundColor": "#1E293B",
     "backgroundColor": "#F5F5F5",
     "backgroundTextStyle": "dark",
@@ -21,15 +23,21 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "赛事"
+        "text": "赛事",
+        "iconPath": "images/icon_list.png",
+        "selectedIconPath": "images/icon_list_selected.png"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "百事通"
+        "pagePath": "pages/allThings/allThings",
+        "text": "百事通",
+        "iconPath": "images/icon_info.png",
+        "selectedIconPath": "images/icon_info_selected.png"
       },
       {
-        "pagePath": "pages/match/match",
-        "text": "我的"
+        "pagePath": "pages/users/users",
+        "text": "我的",
+        "iconPath": "images/icon_user.png",
+        "selectedIconPath": "images/icon_user_selected.png"
       }
     ]
   },

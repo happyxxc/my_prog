@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@vant/weapp": "^1.11.7",
+    "sharp": "^0.34.5",
     "tdesign-miniprogram": "^1.11.0"
   }
 }

@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "橄榄力",
+  "navigationBarBackgroundColor": "#1E293B",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f5f5f5",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index"
+  }
+}

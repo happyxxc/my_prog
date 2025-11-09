@@ -1,0 +1,82 @@
+
+
+
+
+<view class="page-container">
+  <!-- 顶部导航栏 -->
+  <view class="header">
+    <view class="tabs">
+      <view class="tab-item {{activeTab === 'teams' ? 'active' : ''}}" bindtap="switchTab" data-tab="teams">球队介绍</view>
+      <view class="tab-item {{activeTab === 'players' ? 'active' : ''}}" bindtap="switchTab" data-tab="players">球星介绍</view>
+    </view>
+  </view>
+
+  <!-- 筛选区域 -->
+  <view class="filter-container">
+    <view class="filter-content">
+      <picker bindchange="bindRegionChange" value="{{regionIndex}}" range="{{regions}}">
+        <view class="filter-item">
+          {{regions[regionIndex]}}
+          <text class="filter-arrow">▼</text>
+        </view>
+      </picker>
+      
+      <picker bindchange="bindLevelChange" value="{{levelIndex}}" range="{{levels}}">
+        <view class="filter-item">
+          {{levels[levelIndex]}}
+          <text class="filter-arrow">▼</text>
+        </view>
+      </picker>
+      
+      <picker bindchange="bindSortChange" value="{{sortIndex}}" range="{{sortOptions}}">
+        <view class="filter-item">
+          {{sortOptions[sortIndex]}}
+          <text class="filter-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+    <view class="search-icon" bindtap="onSearch">
+      <image src="/images/search.png" mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <!-- 球队列表内容区 -->
+  <scroll-view class="content-scroll" scroll-y>
+    <block wx:for="{{teams}}" wx:key="id">
+      <view class="team-card">
+        <view class="team-logo" style="background-color: {{item.logoBgColor}}">
+          <text class="logo-icon">{{item.logoIcon}}</text>
+        </view>
+        
+        <view class="team-info">
+          <view class="team-name">{{item.name}}</view>
+          <view class="team-details">
+            <view class="detail-item">
+              <text class="detail-icon">📅</text>
+              <text class="detail-text">成立于{{item.year}}</text>
+            </view>
+            <view class="detail-item">
+              <text class="detail-icon">📍</text>
+              <text class="detail-text">{{item.city}}</text>
+            </view>
+            <view class="detail-item">
+              <text class="detail-icon">🏆</text>
+              <text class="detail-text">{{item.championships}}次冠军</text>
+            </view>
+            <view class="detail-item">
+              <text class="detail-icon">🔄</text>
+              <text class="detail-text">{{item.matches}}场比赛</text>
+            </view>
+          </view>
+        </view>
+        
+        <view class="favorite-btn" catchtap="onFavorite" data-id="{{item.id}}" data-index="{{index}}">
+          <van-icon name="{{item.isFavorite ? 'star' : 'star-o'}}" size="20" color="{{item.isFavorite ? '#ff9500' : '#df3535ff'}}"></van-icon>
+        </view>
+      </view>
+    </block>
+    
+    <!-- 底部空间，确保内容不被tabBar遮挡 -->
+    <view class="bottom-space"></view>
+  </scroll-view>
+</view>

@@ -179,5 +179,14 @@ Page({
       path: `/pages/matchDetail/matchDetail?id=${this.data.matchId}`,
       imageUrl: matchInfo ? matchInfo.image : ''
     };
+  },
+
+  // 右上角导航栏按钮点击事件
+  onNavigationBarButtonTap() {
+    // 触发页面分享
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    });
   }
 });
